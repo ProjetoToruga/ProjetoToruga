@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toruga</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" href="../public/icon.png" type="image/x-icon">
+    <script defer type="module" src="./js/controller.js"></script>
+</head>
+
+<body>
+    <main class="app">
+        <div class="app-pages">
+            <section class="app-page page-0">
+                <form class="add-toruga__modal hidden" autocomplete="off">
+                    <div class="choose-nickname__wrapper">
+                        <label for="nickname" class="label-nickname">Defina um apelido para sua Toruga:</label>
+                        <input type="text" id="nickname" class="choose-nickname" placeholder="Escreva um apelido">
+                    </div>
+                    <button type="submit" class="register-toruga">Confirmar</button>
+                </form>
+
+                <div class="add-toruga__modal--overlay hidden"></div>
+
+                <header class="user-actions">
+                    <div class="welcome">
+                        <h3 class="welcome__message">Boas vindas, <br><strong>Usuário!</strong></h3>
+                    </div>
+
+                    <div class="actions">
+                        <button class="add-toruga" title="Adicionar nova Toruga">
+                            <i data-lucide="circle-plus"></i>
+                        </button>
+                    </div>
+                </header>
+
+                <div class="user-torugas">
+                    <h2 class="label-torugas">Suas Torugas:</h2>
+
+                    <ul class="torugas"></ul>
+                </div>
+            </section>
+
+            <section class="app-page page-1">
+                <header class="toruga-info">
+                    <button class="go-back">
+                        <i data-lucide="circle-arrow-left"></i>
+                    </button>
+
+                    <hgroup class="toruga-info__info">
+                        <h1 class="toruga-nickname" contenteditable="true">Toruga 1</h1>
+
+                        <div class="toruga-actions">
+                            <button class="toruga-actions__edit-nickname" title="Alterar nome">
+                                <i data-lucide="pencil-line"></i>
+                            </button>
+
+                            <button class="toruga-actions__delete-toruga" title="Excluir Toruga">
+                                <i data-lucide="trash-2"></i>
+                            </button>
+                        </div>
+                    </hgroup>
+
+                    <p class="toruga-id">ID da sua Toruga: #1</p>
+                </header>
+
+                <div class="toruga-data-actions">
+                    <button class="update-analysis">Coletar dados</button>
+                </div>
+
+
+                <div class="data">
+                    <hgroup class="data__info">
+                        <h2 class="title">Dados Coletados:</h2>
+                        <p class="last-analysis"><strong>Data da última coleta: </strong>03/07/2024</p>
+                    </hgroup>
+
+                    <ul class="analysis">
+                        <li class="parameter ph">
+                            <h1 class="ph__title">Nível do pH:</h1>
+
+                            <div class="reading">
+                                <div class="ball" style="background-color: red;"></div>
+                                <p class="description"><strong>Última leitura:</strong> 14</p>
+                            </div>
+
+                            <img src="../public/ph.png" class="caption">
+                        </li>
+
+                        <li class="parameter turbidity">
+                            <h1 class="turbidity__title">Nível de Turbidez:</h1>
+
+                            <div class="reading">
+                                <div class="ball" style="background-color: red;"></div>
+                                <p class="description"><strong>Última leitura:</strong> 0,5u.T</p>
+                            </div>
+
+                            <img src="../public/turbidity.png" class="caption">
+                        </li>
+
+                        <li class="parameter chlorine">
+                            <h1 class="chlorine__title">Nível do Cloro:</h1>
+
+                            <div class="reading">
+                                <div class="ball" style="background-color: red;"></div>
+                                <p class="description"><strong>Última leitura:</strong> 0,25</p>
+                            </div>
+
+                            <img src="../public/chlorine.png" class="caption">
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>

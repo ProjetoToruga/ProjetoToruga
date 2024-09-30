@@ -1,0 +1,482 @@
+:root {
+    --current-page: 0;
+    --number-of-pages: 2;
+
+    --main-background: #EAEFF1;
+    --secondary-background: #00BBFF;
+    --tertiary-background: #000B26;
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: Poppins, sans-serif;
+    color: var(--tertiary-background);
+}
+
+body {
+    height: 100dvh;
+
+    display: grid;
+    place-items: center;
+
+    background: rgb(0, 187, 255);
+    background: -moz-linear-gradient(160deg, rgba(0, 187, 255, 1) 0%, rgba(0, 149, 232, 1) 100%);
+    background: -webkit-linear-gradient(160deg, rgba(0, 187, 255, 1) 0%, rgba(0, 149, 232, 1) 100%);
+    background: linear-gradient(160deg, rgba(0, 187, 255, 1) 0%, rgba(0, 149, 232, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00bbff", endColorstr="#0095e8", GradientType=1);
+}
+
+img {
+    width: 100%;
+}
+
+button {
+    display: grid;
+    place-items: center;
+
+    cursor: pointer;
+    border: none;
+}
+
+button:active {
+    translate: 0px 1px;
+}
+
+button:disabled {
+    opacity: .9;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+
+
+/* APP SETUP */
+
+.app {
+    position: relative;
+
+    margin: 5dvh auto;
+
+    width: 430px;
+    height: 90dvh;
+
+    border-radius: 30px;
+
+    overflow: hidden;
+}
+
+.app-pages {
+    position: relative;
+    width: calc(100% * var(--number-of-pages));
+    height: 100%;
+
+    translate: calc(-100% * var(--current-page) / var(--number-of-pages));
+    transition: .3s ease-in-out;
+}
+
+.app-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: calc(100% / var(--number-of-pages));
+    height: 100%;
+
+    background-color: var(--main-background);
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.app-page::-webkit-scrollbar {
+    display: none;
+}
+
+.page-0 {
+    translate: calc(100% * 0);
+}
+
+.page-1 {
+    translate: calc(100% * 1);
+}
+
+
+
+
+/* PAGE 0 */
+
+.page-0 {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.user-actions {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 30px;
+    background-color: var(--secondary-background);
+}
+
+.welcome__message {
+    font-size: 1rem;
+    line-height: 125%;
+    font-weight: 400;
+}
+
+.add-toruga {
+    background: none;
+    color: var(--tertiary-background);
+}
+
+.label-torugas {
+    font-size: 1rem;
+}
+
+.user-torugas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    margin-bottom: 20px;
+
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.no-content {
+    padding: 30px;
+
+    border: 2px dashed var(--tertiary-background);
+    border-radius: 15px;
+
+    text-align: center;
+
+    font-size: 1rem;
+}
+
+.torugas {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    list-style: none;
+}
+
+.toruga {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+
+    border: 1px solid var(--tertiary-background);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.toruga .cover {
+    padding: 30px 15px;
+    background-color: var(--tertiary-background);
+}
+
+.toruga__info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+.toruga__info .nickname {
+    min-width: 230px;
+
+    font-size: 1.25rem;
+    color: var(--main-background);
+
+    border-bottom: 1px solid var(--main-background);
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.toruga__info .nickname:focus {
+    outline: none;
+}
+
+.delete-toruga,
+.edit-nickname {
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+}
+
+.delete-toruga svg,
+.edit-nickname svg {
+    scale: .8;
+}
+
+.delete-toruga svg {
+    stroke: #FF002E;
+}
+
+.see-more {
+    font-size: .95rem;
+    font-weight: 500;
+    padding: 8px;
+}
+
+
+/* add toruga modal */
+
+.add-toruga__modal {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+
+    width: 70%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 30px;
+    border-radius: 10px;
+    background-color: var(--main-background);
+
+    z-index: 3;
+}
+
+.choose-nickname__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.label-nickname {
+    color: var(--secondary-background);
+    font-size: .75rem;
+}
+
+.choose-nickname {
+    border: var(--secondary-background) solid 1px;
+    border-radius: 6px;
+
+    font-size: 1rem;
+    padding: 5px;
+}
+
+.choose-nickname:focus {
+    outline: #00bbff34 2px solid;
+    outline-offset: 1px;
+}
+
+.choose-nickname::placeholder {
+    opacity: .3;
+    color: var(--tertiary-background);
+}
+
+.register-toruga {
+    background-color: var(--secondary-background);
+
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.add-toruga__modal--overlay {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--tertiary-background);
+
+    z-index: 2;
+    opacity: .9;
+}
+
+
+
+
+/* PAGE 1 */
+
+.page-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.toruga-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: start;
+    justify-content: start;
+
+    padding: 30px;
+
+    background-color: var(--tertiary-background);
+}
+
+.go-back svg {
+    stroke: var(--main-background);
+}
+
+.toruga-info__info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.toruga-nickname {
+    min-width: 280px;
+
+    color: var(--main-background);
+    font-size: 1.5rem;
+    border-bottom: 1px solid var(--main-background);
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.toruga-nickname:focus {
+    outline: none;
+}
+
+.toruga-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.toruga-actions__edit-nickname svg {
+    stroke: var(--main-background);
+}
+
+.toruga-actions__delete-toruga svg {
+    stroke: #FF002E;
+}
+
+.go-back,
+.toruga-actions__edit-nickname,
+.toruga-actions__delete-toruga {
+    background: none;
+}
+
+.toruga-id {
+    color: var(--main-background);
+    font-size: .75rem;
+}
+
+.toruga-data-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.update-analysis {
+    padding: 15px;
+    border-radius: 10px;
+    background-color: var(--secondary-background);
+
+    color: var(--tertiary-background);
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.data__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.data__info .title {
+    font-size: 1.25rem;
+}
+
+.data__info .last-analysis {
+    font-weight: 400;
+    font-size: .75rem;
+}
+
+.analysis {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    list-style: none;
+
+    margin-bottom: 30px;
+}
+
+.parameter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 15px;
+    padding-bottom: 0;
+    border-radius: 10px;
+    border: 1px solid var(--tertiary-background);
+}
+
+.parameter h1 {
+    font-size: 1.15rem;
+}
+
+.reading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+
+    padding: 10px;
+    border-radius: 5px;
+
+    background-color: #000b2617;
+}
+
+.reading .ball {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.reading .description {
+    font-size: .75rem;
+}
